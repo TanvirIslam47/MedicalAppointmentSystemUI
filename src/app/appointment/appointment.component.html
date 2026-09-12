@@ -1,0 +1,87 @@
+<div class="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-emerald-100 px-4 py-8 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-5xl overflow-hidden rounded-[32px] border border-sky-100 bg-white/80 shadow-[0_30px_80px_rgba(14,165,233,0.12)] backdrop-blur-sm">
+    <div class="bg-gradient-to-r from-sky-600 via-cyan-600 to-emerald-600 px-6 py-8 text-white sm:px-10">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <div class="mb-2 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-50">Booking</div>
+          <h2 class="text-3xl font-bold">Book an Appointment</h2>
+        </div>
+        <div class="hidden h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-3xl shadow-inner md:flex">🩺</div>
+      </div>
+    </div>
+
+    <div class="p-6 sm:p-10">
+      <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <div class="grid gap-5 md:grid-cols-2">
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Full Name *</label>
+            <input formControlName="fullName" type="text" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100" />
+          </div>
+
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Email *</label>
+            <input formControlName="patientEmail" type="email" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100" />
+          </div>
+
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Mobile Number *</label>
+            <input formControlName="contactNumber" type="text" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100" placeholder="e.g. 017xxxxxxxx" />
+          </div>
+
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Date of Birth *</label>
+            <input formControlName="dateOfBirth" type="date" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100" />
+          </div>
+
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Gender *</label>
+            <select formControlName="gender" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100">
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Address</label>
+            <input formControlName="address" type="text" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100" />
+          </div>
+
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Department *</label>
+            <select formControlName="departmentId" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100" (change)="onDepartmentChange($event)">
+              <option value="">Select Department</option>
+              <option *ngFor="let d of departments" [value]="d.departmentId">{{ d.departmentName }}</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Doctor *</label>
+            <select formControlName="doctorId" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100">
+              <option value="">-- Select Doctor --</option>
+              <option *ngFor="let d of filteredDoctors" [value]="d.doctorId">{{ d.fullName }} - {{ d.specialization }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="mb-2 block text-sm font-medium text-slate-700">Appointment Date *</label>
+          <input formControlName="appointmentDate" type="date" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100" />
+        </div>
+
+        <div>
+          <label class="mb-2 block text-sm font-medium text-slate-700">Notes</label>
+          <textarea formControlName="notes" rows="4" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-700 outline-none transition focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100"></textarea>
+        </div>
+
+        <div class="flex justify-end">
+          <button type="submit" class="rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition hover:from-emerald-500 hover:to-teal-500">
+            💾 Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

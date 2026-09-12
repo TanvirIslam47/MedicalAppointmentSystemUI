@@ -1,0 +1,77 @@
+<nav class="sticky top-0 z-50 border-b border-emerald-100 bg-white/85 shadow-[0_10px_25px_rgba(16,185,129,0.08)] backdrop-blur-md">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <a routerLink="/book-appointment" class="flex items-center gap-3 text-slate-800">
+      <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-lg shadow-lg shadow-emerald-500/20">
+        🏥
+      </div>
+      <div>
+        <div class="text-lg font-extrabold tracking-tight">Medical Care</div>
+        <div class="text-[10px] font-medium uppercase tracking-[0.2em] text-slate-500">Appointment System</div>
+      </div>
+    </a>
+
+    <div class="hidden items-center gap-2 md:flex">
+      <a
+        routerLink="/about"
+        routerLinkActive="text-emerald-700 bg-emerald-50"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+      >
+        About Us
+      </a>
+
+      <a
+        routerLink="/book-appointment"
+        routerLinkActive="text-emerald-700 bg-emerald-50"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+      >
+        Appointment
+      </a>
+
+      <ng-container *ngIf="!userFullName">
+        <a
+          routerLink="/login"
+          routerLinkActive="text-emerald-700 bg-emerald-50"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+        >
+          Login
+        </a>
+        <a
+          routerLink="/signup"
+          routerLinkActive="text-emerald-700 bg-emerald-50"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700"
+        >
+          Signup
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="userFullName">
+        <div class="flex items-center gap-3 rounded-full border border-emerald-100 bg-emerald-50 px-3 py-2">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500 text-sm text-white">👤</span>
+          <span class="text-sm font-semibold text-slate-700">{{ userFullName }}</span>
+        </div>
+
+        <button
+          type="button"
+          (click)="logout()"
+          class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-rose-200 hover:bg-rose-50 hover:text-rose-600"
+        >
+          Logout
+        </button>
+      </ng-container>
+    </div>
+
+    <button
+      class="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white p-2 text-slate-700 md:hidden"
+      type="button"
+      aria-label="Toggle menu"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</nav>

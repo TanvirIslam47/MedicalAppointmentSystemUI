@@ -1,0 +1,108 @@
+<div class="min-h-screen bg-gradient-to-br from-sky-50 via-white to-emerald-100 px-4 py-10 sm:px-6 lg:px-8">
+  <div class="mx-auto grid max-w-6xl overflow-hidden rounded-[32px] border border-slate-200 bg-white/80 shadow-[0_30px_80px_rgba(14,116,144,0.14)] backdrop-blur-sm lg:grid-cols-2">
+    <div class="relative hidden overflow-hidden bg-gradient-to-br from-sky-600 via-cyan-600 to-emerald-600 p-10 text-white lg:flex lg:flex-col lg:justify-between">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.25),_transparent_35%)]"></div>
+
+      <div class="relative z-10">
+        <div class="mb-8 inline-flex items-center rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-sm">
+          Join Our Care Network
+        </div>
+        <h1 class="text-4xl font-bold leading-tight">Create your account and start managing care better</h1>
+        <p class="mt-4 max-w-md text-base text-cyan-50/90">
+          Connect with patients, doctors, and admin staff in one secure healthcare platform built for smooth appointment management.
+        </p>
+      </div>
+
+      <div class="relative z-10 rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur-sm">
+        <div class="flex items-center justify-between text-sm text-cyan-50/80">
+          <span>Care team benefits</span>
+          <span class="rounded-full bg-white/15 px-2 py-1 text-xs font-semibold text-white">New</span>
+        </div>
+
+        <div class="mt-5 space-y-3">
+          <div class="flex items-center gap-3 rounded-xl bg-white/10 px-3 py-2">
+            <span class="text-xl">✅</span>
+            <span class="text-sm font-medium">Fast appointment access</span>
+          </div>
+          <div class="flex items-center gap-3 rounded-xl bg-white/10 px-3 py-2">
+            <span class="text-xl">📋</span>
+            <span class="text-sm font-medium">Smart patient tracking</span>
+          </div>
+          <div class="flex items-center gap-3 rounded-xl bg-white/10 px-3 py-2">
+            <span class="text-xl">🔒</span>
+            <span class="text-sm font-medium">Secure and reliable workflow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-center p-6 sm:p-10 lg:p-12">
+      <div class="w-full max-w-md">
+        <div class="mb-8 text-center lg:text-left">
+          <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-100 text-2xl shadow-sm lg:mx-0">
+            📝
+          </div>
+          <h2 class="text-3xl font-bold text-slate-800">Create account</h2>
+          <p class="mt-2 text-sm text-slate-500">Register your profile to get started</p>
+        </div>
+
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="space-y-5">
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Full Name</label>
+            <input
+              type="text"
+              formControlName="fullName"
+              class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-800 placeholder:text-slate-400 shadow-sm outline-none transition duration-200 focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100"
+              placeholder="Enter full name"
+            >
+          </div>
+
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Mobile Number</label>
+            <input
+              type="text"
+              formControlName="mobile"
+              class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-800 placeholder:text-slate-400 shadow-sm outline-none transition duration-200 focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100"
+              placeholder="Enter mobile number"
+            >
+          </div>
+
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Password</label>
+            <input
+              type="password"
+              formControlName="password"
+              class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-800 placeholder:text-slate-400 shadow-sm outline-none transition duration-200 focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100"
+              placeholder="Enter password"
+            >
+          </div>
+
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Role</label>
+            <select
+              formControlName="role"
+              class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-800 shadow-sm outline-none transition duration-200 focus:border-sky-400 focus:bg-white focus:ring-4 focus:ring-sky-100"
+            >
+              <option value="Admin">Admin</option>
+              <option value="Doctor">Doctor</option>
+              <option value="User">User</option>
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            [disabled]="loading"
+            class="w-full rounded-2xl bg-gradient-to-r from-sky-600 to-emerald-600 px-4 py-3 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition hover:from-sky-500 hover:to-emerald-500 disabled:cursor-not-allowed disabled:opacity-70"
+          >
+            {{ loading ? 'Registering...' : 'Sign Up' }}
+          </button>
+        </form>
+
+        <p class="mt-6 text-center text-sm text-slate-500">
+          Already have an account?
+          <a routerLink="/login" class="font-semibold text-sky-600 hover:text-sky-500">Login here</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
