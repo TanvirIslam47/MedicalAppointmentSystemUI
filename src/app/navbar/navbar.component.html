@@ -29,6 +29,16 @@
         Appointment
       </a>
 
+      <a
+        *ngIf="canViewAppointmentList"
+        routerLink="/appointment"
+        routerLinkActive="text-emerald-700 bg-emerald-50"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+      >
+        Appointment List
+      </a>
+
       <ng-container *ngIf="!userFullName">
         <a
           routerLink="/login"

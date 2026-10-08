@@ -9,12 +9,14 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
   userFullName: string | null = null;
+  canViewAppointmentList = false;
 
   constructor(private router: Router, private auth: AuthService,) {}
 
   ngOnInit(): void {
     this.auth.user$.subscribe(user => {
       this.userFullName = user ? user.fullName || user.FullName : null;
+      this.canViewAppointmentList = user?.role === 'Admin' || user?.role === 'Doctor';
     });
   }
 

@@ -10,7 +10,7 @@ This repository contains the frontend application. It communicates with a separa
 
 ### Patients and general users
 
-- Create an account and sign in.
+- Create an account and sign in.app
 - Browse the appointment booking form.
 - Select an appointment date, visit type, department, doctor, and patient.
 - View appointment records available to their account.
