@@ -25,7 +25,11 @@ loginForm!: FormGroup;
       next: (res) => {
         this.toastr.success('Login successful');
         this.auth.setUser(res.user);
-        this.router.navigate(['/appointment']);
+        const role = res.user?.role;
+        const destination = role === 'User' || role === 'Patient'
+          ? '/book-appointment'
+          : '/appointment';
+        this.router.navigate([destination]);
       },
       error: () => {
         this.toastr.error('Invalid credentials');
